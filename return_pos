@@ -1,0 +1,16 @@
+# function to find the end point of the next chunk, i.e. where we see a change from alpha to numeric
+
+return_pos = function(p,m,n,l){
+  # looks at the status code for the start point
+  b = m[n,2]
+  # looks at the status code of the possible end point
+  new_b = m[p,2]
+  # compares the codes
+  if (b != new_b){
+    return(p-1)} else {
+      p = p + 1
+      if (p > l){
+        return(p-1)} else {
+          return_pos(p,m,n,l)}}
+}  
+
