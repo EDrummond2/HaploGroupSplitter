@@ -1,0 +1,23 @@
+# this function takes the HG string and returns a matrix of word/digit for each alphanumeric in the string
+
+matrix_coding = function(HG){
+  l = nchar(HG)
+  blocks = c()
+  codes = c()
+  for (n in 1:l){
+    block = str_sub(HG,n,n)
+    blocks = c(blocks, block)
+    word_char = str_detect(block,"\\w")
+    digit = str_detect(block,"\\d")
+    code = 0
+    if(word_char == TRUE){
+      code = code + 1
+      if(digit == TRUE){
+        code = code + 1
+      }}
+    codes = c(codes, code)
+  }
+  df = data.frame(blocks,codes,stringsAsFactors = FALSE)
+  return(df)
+}
+
