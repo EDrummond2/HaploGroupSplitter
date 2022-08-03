@@ -1,0 +1,29 @@
+matrix_process_fixed = function(HG){
+  library(stringr)
+  cl = c()
+  # chunk list holder
+  matrix_y = matrix_coding(HG)
+  # creates matrix of decisions
+  l = length(matrix_y[,1])
+  # finds length of matrix, i.e. the number of pieces in the string
+  x = 1
+  z = 1
+  while ((z <= l) == TRUE) {
+    # until start point is longer than matrix
+    z = return_pos(z, matrix_y, x, l)
+    # finds end point of that block
+    block = str_sub(HG,x,z)
+    # cuts chunk
+    #print(block)
+    cl = c(cl,block)
+    # stores chunk
+    x = z + 1
+    z = x
+  }
+  cl2 = c()
+  for (b in cl){
+    if (str_detect(b,"\\w") == TRUE){cl2 = c(cl2,b)}
+  }
+  return(cl2)
+}
+
